@@ -98,4 +98,19 @@ class PostController extends Controller
             $post,
         );
     }
+
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+
+        Storage::delete('public/posts/' . basename($post->image));
+
+        $post->delete();
+
+        return new PostResource(
+            true,
+            'Post deleted',
+            $post,
+        );
+    }
 }
