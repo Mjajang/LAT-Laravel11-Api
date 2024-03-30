@@ -48,4 +48,15 @@ class PostController extends Controller
             $post,
         );
     }
+
+    public function show($id)
+    {
+        $post = Post::find($id);
+
+        return new PostResource(
+            true,
+            'Post detail',
+            $post,
+        );
+    }
 }
